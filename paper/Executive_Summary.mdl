@@ -1,0 +1,181 @@
+--- MDL HEADER v1 ---
+{
+  "version": "1.0",
+  "created_at": "2026-04-22T09:22:32.834531Z",
+  "modules": [
+    "hash",
+    "local_entropy",
+    "market_anchor_v1"
+  ],
+  "proof": {
+    "hash": "346c890534cfa339656ea23964e65a13608a9fcbb5d8c9a363e111d2a1cce6df",
+    "local_entropy": {
+      "system_time_utc": "2026-04-22T09:22:31.162027Z",
+      "monotonic_ns": 154617671000000,
+      "random_nonce": "01fa4c9f396b4c8372e02195acb0a33d712bf4fdfb38b5f5c48139dc6343d35e"
+    },
+    "market_anchor_v1": {
+      "canonical_string": "2026-04-22|DAX=24307.15@2026-04-22|NIKKEI=59585.86@2026-04-22|SP500=7064.01@2026-04-21|SSE=4106.26@2026-04-22",
+      "hash": "f0685d086dfc70838fd5c27284768cea3c4ecf8bb03c8a32bd5807d02c79c3a6",
+      "indices": {
+        "DAX": [
+          24307.150390625,
+          "2026-04-22"
+        ],
+        "NIKKEI": [
+          59585.859375,
+          "2026-04-22"
+        ],
+        "SP500": [
+          7064.009765625,
+          "2026-04-21"
+        ],
+        "SSE": [
+          4106.25830078125,
+          "2026-04-22"
+        ]
+      },
+      "mock_fallback": false
+    }
+  }
+}
+--- CONTENT ---
+# Executive Summary
+## The Gauss–PowerLaw Module (GPM): A New Early-Warning System for Financial Risk
+
+**Author:** László Tatai / BarefootRealism Labs  
+**Date:** April 2026  
+**Contact:** ORCID 0009-0007-5153-6306
+
+---
+
+## The Problem
+
+Every major financial crisis of the past two decades was preceded by the same
+invisible structural change: the statistical distribution of market returns
+quietly shifted from well-behaved (Gaussian) to extreme (heavy-tailed).
+When this happens, standard risk models break down. Sharpe ratios become
+meaningless. Value-at-Risk underestimates true exposure. The tools that
+practitioners rely on silently lose their validity — before anyone notices.
+
+The question is: **can this shift be detected before the crisis, not after?**
+
+---
+
+## The Answer
+
+Yes. And it can be measured with a single number.
+
+This work introduces **delta_GARCH** — a real-time indicator derived from
+standard GARCH volatility estimation — that measures how close a market is
+to the critical boundary where normal statistical inference collapses.
+
+When **delta_GARCH crosses zero from above, the market has entered the
+danger zone.** CLT-based inference is no longer valid. Heavy tails are
+no longer a tail risk — they are the dominant regime.
+
+---
+
+## The Evidence
+
+Validated on **seven real markets** using daily data from 2002 to 2026:
+
+| Market | Crisis detected | Signal timing |
+|--------|----------------|---------------|
+| S&P 500 | Lehman 2008, 2018 volatility | Weeks before peak |
+| NASDAQ | 2008, COVID 2020, 2022 | Consistent pre-crisis warning |
+| DAX | 2008, 2020, 2022 | European confirmation |
+| OTP Bank (Hungary) | 2008, 2015–16 | Emerging market profile |
+| Mercedes-Benz | 2023–2026 | Currently in danger zone |
+| Bitcoin / USD | Persistent | Chronically in extreme regime |
+| USD / EUR | 2008 (brief) | Reference: stable baseline |
+
+The signal is **not a forecast**. It is a structural diagnostic — like a
+pressure gauge. When pressure exceeds the critical threshold, the system
+has already changed. The question is no longer whether a crisis will come,
+but how large it will be.
+
+---
+
+## The Theory (Non-Technical)
+
+Standard GARCH models describe *how volatile* a market is.
+The Gauss–PowerLaw Module (GPM) asks a deeper question:
+*why do extreme events cluster the way they do?*
+
+The answer is a **bifurcation** — a structural tipping point in the coupled
+dynamics of volatility and tail behavior. Below the tipping point, the system
+is Gaussian: standard statistics apply. Above it, the system has crossed into
+power-law territory: standard statistics break down.
+
+This paper proves — algebraically, not just empirically — that the tipping
+point identified by López de Prado, Porcu, Zoonekynd & Engle (2026) in their
+Sharpe ratio inference framework is **mathematically identical** to the GPM
+bifurcation. Two independent derivations, one critical boundary.
+
+> GARCH captures the symptom.  
+> The GPM captures the mechanism.
+
+---
+
+## What This Means in Practice
+
+**For risk managers:** delta_GARCH provides a real-time regime indicator.
+When it turns negative, reduce exposure to models that assume normality.
+
+**For quantitative researchers:** the GPM provides a mechanistic foundation
+for heavy-tail emergence — not as an assumption to be estimated,
+but as a structural consequence to be derived.
+
+**For portfolio managers:** the Sharpe ratio loses its meaning when
+delta_GARCH < 0. Alternative risk functionals (fractional Sharpe,
+as proposed by López de Prado et al., 2026) should be applied instead.
+
+**For regulators:** the indicator provides a market-wide structural
+diagnostic that is independent of any specific model or institution.
+
+---
+
+## What Is Included in This Release
+
+- **Full theoretical paper** with formal proofs (Lemma 1, Theorem 1,
+  Theorem 2, completed Appendix)
+- **Python implementation** — open source, reproducible, documented
+- **Empirical results** — seven markets, timestamped figures and data
+- **Integrity verification** — all documents available in MDL format
+  (cryptographic authorship and timestamp proof)
+
+---
+
+## Key Result in One Line
+
+$$\Delta_{\text{GPM}} = 0 \;\Longleftrightarrow\; \varphi_4 = 1
+\;\Longleftrightarrow\; \kappa = 4
+\;\Longleftrightarrow\; \mathbb{E}[y^4] = \infty$$
+
+*Four equivalent conditions. One critical boundary.
+Detectable in real time. Proven from first principles.*
+
+---
+
+## Citation
+
+```
+Tatai, L. (2026). The Gauss–PowerLaw Module (GPM): Endogenous Heavy-Tail
+Formation as a Bifurcation Phenomenon. BarefootRealism Labs. Zenodo.
+doi: [assigned on upload]
+```
+
+---
+
+## Related Work
+
+López de Prado, M., Porcu, E., Zoonekynd, V., & Engle, R. F. (2026).
+*A closed-form solution for Sharpe ratio inference under GARCH returns.*
+SSRN. https://ssrn.com/abstract=6568702
+
+---
+
+*This document is part of the BarefootRealism Labs research portfolio.
+Integrity verified with MDL (Markdown Logged) — a tamper-evident
+document format developed by BarefootRealism Labs.*
