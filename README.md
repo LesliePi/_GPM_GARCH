@@ -3,7 +3,7 @@
 **Author:** László Tatai / BarefootRealism Labs  
 **ORCID:** 0009-0007-5153-6306  
 **License:** MIT  
-**Zenodo DOI:** *(to be assigned on upload)*
+**Zenodo DOI:** DOI 10.5281/zenodo.19692647.
 
 ---
 
